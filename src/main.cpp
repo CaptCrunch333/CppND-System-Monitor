@@ -3,5 +3,7 @@
 
 int main() {
   System system;
-  NCursesDisplay::Display(system);
+  while(1)
+    system.Cpu().Utilization();
+  //NCursesDisplay::Display(system);
 }
