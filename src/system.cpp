@@ -18,11 +18,15 @@ Processor& System::Cpu() { return cpu_; }
 
 // Return a container composed of the system's processes
 vector<Process>& System::Processes() {
-    processes_.clear(); //not pointers, no need to clear mem
+    Process _temp;
+    processes_.clear();
     auto list_of_processes = LinuxParser::Pids();
-    for(const auto& proc : list_of_processes) { 
-        processes_.push_back(*(new Process(proc)));
+    for(const auto& proc : list_of_processes) {
+        _temp.Pid(proc);
+        _temp.calcCpuUtil();
+        processes_.push_back(_temp);
     }
+    std::sort(processes_.begin(), processes_.end(), customSort);
     return processes_; 
     }
 
