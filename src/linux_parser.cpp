@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-
 #include "linux_parser.h"
 
 using std::stof;
@@ -112,24 +111,18 @@ long LinuxParser::ActiveJiffies(int pid) {
     while(linestream >> val) {
       if(counter == (int)LinuxParser::ProcessStat::utime) {
         aj += stol(val);
-        //std::cout << "utime: " << val;
       }
       else if(counter == (int)LinuxParser::ProcessStat::stime) {
         aj += stol(val);
-        //std::cout << " stime: " << val;
       }
       else if(counter == (int)LinuxParser::ProcessStat::cutime) {
         aj += stol(val);
-        //std::cout << " cutime: " << val;
       }
       else if(counter == (int)LinuxParser::ProcessStat::cstime) {
         aj += stol(val);
-        //std::cout << " cstime: " << val << std::endl;
         break;
       }
       counter++;
-      //std::cout << " counter: " << counter << std::endl;
-      //std::cout << " line: " << line << std::endl;
     }
   }
   stream.close();
@@ -254,9 +247,9 @@ long LinuxParser::UpTime(int pid) {
   string val("0"), line;
   std::ifstream stream(kProcDirectory+std::to_string(pid)+kStatFilename);
   if (stream.is_open()) {
-    while(std::getline(stream, line)) {
-        std::istringstream linestream(line);
-        linestream >> val;
+    std::getline(stream, line);
+    std::istringstream linestream(line);
+    while(linestream >> val) {
       if(counter == (int)LinuxParser::ProcessStat::starttime) {
         break;
       }

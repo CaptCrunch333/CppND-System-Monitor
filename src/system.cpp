@@ -23,7 +23,8 @@ vector<Process>& System::Processes() {
     for(const auto& proc : list_of_processes) { 
         processes_.push_back(*(new Process(proc)));
     }
-    return processes_; }
+    return processes_; 
+    }
 
 // Return the system's kernel identifier (string)
 std::string System::Kernel() { return LinuxParser::Kernel(); }

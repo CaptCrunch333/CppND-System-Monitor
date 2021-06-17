@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-
 #include "process.h"
 
 using std::string;
@@ -34,7 +33,9 @@ string Process::Ram() { return LinuxParser::Ram(_pid); }
 string Process::User() { return LinuxParser::User(_pid); }
 
 // Return the age of this process (in seconds)
-long int Process::UpTime() { return long(LinuxParser::UpTime(_pid)/LinuxParser::Jiffies()); }
+long int Process::UpTime() { 
+    return long(LinuxParser::UpTime() - (LinuxParser::UpTime(_pid)/LinuxParser::Jiffies())); 
+}
 
 // Overload the "less than" comparison operator for Process objects
 bool Process::operator<(Process const& a) const { return (this->getCpuUtil() < a.getCpuUtil() ? true : false); }
