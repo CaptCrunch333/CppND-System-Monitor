@@ -21,6 +21,7 @@ vector<Process>& System::Processes() {
     Process _temp;
     processes_.clear();
     auto list_of_processes = LinuxParser::Pids();
+    if(list_of_processes.size() == 0) {std::cerr << "0 size processes!!!\n";}
     for(const auto& proc : list_of_processes) {
         _temp.Pid(proc);
         _temp.calcCpuUtil();
