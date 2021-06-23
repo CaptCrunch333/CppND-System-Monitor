@@ -20,7 +20,7 @@ class System {
   int RunningProcesses();             // See src/system.cpp
   std::string Kernel();               // See src/system.cpp
   std::string OperatingSystem();      // See src/system.cpp
-  static bool customSort(Process p1, Process p2) { return !(p1 < p2); }
+  static bool customSort(Process p1, Process p2) { return p1 > p2; }
 
   // Define any necessary private members
  private:

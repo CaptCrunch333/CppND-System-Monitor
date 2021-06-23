@@ -44,7 +44,7 @@ long int Process::UpTime() {
 }
 
 // Overload the "less than" comparison operator for Process objects
-bool Process::operator<(Process const& a) const { return (this->CpuUtilization() < a.CpuUtilization() ? true : false); }
+bool Process::operator>(Process const& a) const { return (this->CpuUtilization() > a.CpuUtilization() ? true : false); }
 
 // Overload the "eqaulity" comparison operator for Process objects
 bool Process::operator==(Process const& a) const { return (this->Pid() == a.Pid() ? true : false); }

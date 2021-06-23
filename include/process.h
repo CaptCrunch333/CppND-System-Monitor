@@ -19,7 +19,7 @@ class Process {
   float CpuUtilization();                  // See src/process.cpp
   std::string Ram();                       // See src/process.cpp
   long int UpTime();                       // See src/process.cpp
-  bool operator<(Process const& a) const;  // See src/process.cpp
+  bool operator>(Process const& a) const;  // See src/process.cpp
   bool operator==(Process const& a) const;  // See src/process.cpp
   float CpuUtilization() const {return _util;}
   void calcCpuUtil();
